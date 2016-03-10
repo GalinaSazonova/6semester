@@ -1,0 +1,16 @@
+﻿Сборка начата 28.02.2016 20:19:03.
+     1>Проект "C:\Users\Галина\Documents\GitHub\6semester\task4\task4\task4.vcxproj" в узле 2 (целевые объекты Build).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\task4.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt task4.cpp
+         task4.cpp
+     1>c:\users\галина\documents\github\6semester\task4\task4\task4.cpp(25): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+     1>c:\users\галина\documents\github\6semester\task4\task4\task4.cpp(38): warning C4715: almostPrime: значение возвращается не при всех путях выполнения
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Галина\Documents\GitHub\6semester\task4\Debug\task4.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Галина\Documents\GitHub\6semester\task4\Debug\task4.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Галина\Documents\GitHub\6semester\task4\Debug\task4.lib" /MACHINE:X86 Debug\stdafx.obj
+         Debug\task4.obj
+         task4.vcxproj -> C:\Users\Галина\Documents\GitHub\6semester\task4\Debug\task4.exe
+     1>Сборка проекта "C:\Users\Галина\Documents\GitHub\6semester\task4\task4\task4.vcxproj" завершена (целевые объекты Build).
+
+Сборка успешно завершена.
+
+Затраченное время: 00:00:01.07
