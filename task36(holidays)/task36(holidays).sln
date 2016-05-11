@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "task36(holidays)", "task36(holidays)\task36(holidays).vcxproj", "{E946F42C-B9F5-4A17-9B32-1ED9CDDC1004}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E946F42C-B9F5-4A17-9B32-1ED9CDDC1004}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E946F42C-B9F5-4A17-9B32-1ED9CDDC1004}.Debug|Win32.Build.0 = Debug|Win32
+		{E946F42C-B9F5-4A17-9B32-1ED9CDDC1004}.Release|Win32.ActiveCfg = Release|Win32
+		{E946F42C-B9F5-4A17-9B32-1ED9CDDC1004}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

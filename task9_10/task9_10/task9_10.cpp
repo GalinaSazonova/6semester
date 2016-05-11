@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include <stdio.h>
 #include <iostream>
+#include <cmath>
+#include <stdexcept>
 
 using namespace std;
 
@@ -22,16 +24,20 @@ public:
 	void push(int value);
 	int pop();
 	int& max();
+	double maxsin() const;
 private:
 	int *stack;
 	int n;
 	int check;
-	void pushing();
+	int maxElInd;
+	mutable double maxsinval = 0;
+	mutable int index = -1;
+	mutable bool canCount = true;
 };
 
 myStack::myStack()
 {
-	n = 100;
+	n = 2;
 	check = 0;
 	stack = new int[n];
 }
@@ -43,23 +49,27 @@ myStack::~myStack()
 
 void myStack::push(int value)
 {
-	pushing();
-	stack[0] = value;
-	check++;
-}
-
-void myStack::pushing()
-{
 	if (check == n)
 	{
 		n *= 2;
 		int *newst = new int[n];
 		copy(stack, newst, n);
+		int *p = stack;
 		stack = newst;
+		delete [] p;
 	}
-	for (int i = n - 1; i > 0; i--)
+	if (check == 0 || maxElInd < value)
+		maxElInd = check;
+	stack[check] = value;
+	check++;
+	if (canCount || maxsinval != 0)
 	{
-		stack[i] = stack[i - 1];
+		double k = sin(stack[check - 1] * stack[check - 2]);
+		if (k > maxsinval)
+		{
+			maxsinval = k;
+			index = check - 2;
+		}
 	}
 }
 
@@ -68,30 +78,68 @@ int myStack::pop()
 	check--;
 	if (check != -1)
 	{
-		int temp = stack[0];
-		for (int i = 0; i < n; i++)
+		int k = stack[check];
+		stack[check] = 0;
+		if (check == maxElInd)
 		{
-			stack[i] = stack[i + 1];
+			maxElInd = 0;
+			for (int i = 0; i < check; i++)
+			{
+				if (stack[i] > stack[maxElInd])
+				{
+					maxElInd = i;
+				}
+			}
 		}
-		return temp;
+		if (index == check || index + 1 == check)
+		{
+			canCount = false;
+			//maxsinval = 0;
+		}			
+		return k;
 	}
 	check++;
-	return -1000;
+	//return -1000;
+	throw out_of_range("Stack is empty");
+}
+
+double myStack::maxsin() const
+{
+	if (maxsinval == 0 || !canCount)
+	{
+		canCount = true;
+		maxsinval = 0;
+		for (int i = 0; i < check - 1; i++)
+		{
+			double t = sin(stack[i] * stack[i + 1]);
+			if (maxsinval < t)
+			{
+				maxsinval = t;
+				index = i;
+			}
+		}
+	}
+	return maxsinval;
 }
 
 int& myStack::max()
 {
-	int max = stack[0];
-	int maxi = 0;
-	for (int i = 0; i < check; i++)
-	{
-		if (stack[i] > max)
-		{
-			max = stack[i];
-			maxi = i;
-		}
+	canCount = false;
+	return stack[maxElInd];
+}
+
+void f(myStack& s)
+{
+	int* p = new int[1000];
+	try{
+		cout << s.pop();
 	}
-	return stack[maxi];
+	catch (const out_of_range& ex)
+	{
+		cout << ex.what();
+		delete[] p;
+	}
+	delete[] p;
 }
 
 int main()
@@ -101,15 +149,9 @@ int main()
 	s.push(2);
 	s.push(3);
 	s.push(4);
-	cout << s.max() << endl;
-	s.max()++;
-	cout << s.max() << endl;
-	s.max() = 7;
-	cout << s.max() << endl;
-	cout << s.pop() << endl;
-	cout << s.max() << endl;
-	s.max()++;
-	cout << s.max() << endl;
+	cout << s.maxsin() << endl;
+	s.pop();
+	cout << s.maxsin() << endl;
 	return 0;
 }
 
